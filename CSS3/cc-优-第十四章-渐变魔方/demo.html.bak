@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  body{
+  perspective:800px;
+  background-color:black;
+  }
+  .content{
+  }
+  .content .box{
+  position:relative;
+  width:300px;
+  height:300px;
+  margin:100px auto;
+
+ 
+  transform-style:preserve-3D;
+  transition-duration:10s;
+  }
+  .content .box:hover{
+  transform:rotateY(360deg) rotateX(720deg);
+  }
+  .content .box .face{
+  position:absolute;
+  width:300px;
+  height:300px;
+  background-image:repeating-linear-gradient(180deg,rgba(255,165,0,.3) 0%,rgba(255,165,0,.3) 5%,transparent 5%,transparent 19%),repeating-linear-gradient(90deg,rgba(255,165,0,.3) 0%,rgba(255,165,0,.3) 5%,transparent 5%,transparent 19%);
+  box-shadow:0 0 20px 5px orange;
+  transition-duration:10s;
+  }
+  .content .box:hover .box-front{
+  background-color:RGB(135,206,235);
+  box-shadow:0 0 30px 10px RGB(135,206,235);
+  }
+  
+  .content .box:hover .box-behind{
+  background-color:rgb(199,21,133);
+  box-shadow:0 0 30px 10px rgb(199,21,133);
+  }
+  
+  .content .box:hover .box-right{
+  background-color:rgb(0,0,139);
+  box-shadow:0 0 30px 10px rgb(0,0,139);
+  }
+ 
+  .content .box:hover .box-left{
+  background-color:RGB(255,215,0);
+  box-shadow:0 0 30px 10px RGB(255,215,0);
+  }
+
+  .content .box:hover .box-bottom{
+  background-color:RGB(173,255,47);
+  box-shadow:0 0 30px 10px RGB(173,255,47);
+  }
+
+  .content .box:hover .box-top{
+  background-color:RGB(105,105,105);
+  box-shadow:0 0 30px 10px RGB(105,105,105);
+  }
+
+
+
+
+
+  .content .box .box-front{
+  transform:translateZ(150px);
+  }
+  .content .box .box-behind{
+  transform:rotateY(-180deg) translateZ(150px);
+  }
+  .content .box .box-right{
+  transform:rotateY(90deg) translateZ(150px);
+  }
+  .content .box .box-left{
+  transform:rotateY(-90deg) translateZ(150px);
+  }
+  .content .box .box-top{
+  transform:rotateX(90deg) translateZ(150px);
+  }
+  .content .box .box-bottom{
+  transform:rotateX(-90deg) translateZ(150px);
+  }
+  p{
+  position:absolute;
+  right:0;
+  left:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  width:221px;
+  height:20px;
+  font-size:30px;
+  color:RGBA(255,255,255,.5);
+  font-weight:bold;
+  }
+
+  .box-front>p{
+  width:100px;
+  ;
+  }
+  .box-bottom>p{
+  width:250px;
+  }
+  .box-top>p{
+  width:200px;
+  }
+  .box-left>p{
+  width:180px;
+  }
+  .box-behind>p{
+  width:180px;
+  }
+  
+  </style>
+ </head>
+ <body>
+ <div class='content'>
+ <div class='box'><p>我是一个小方块</p>
+ <div class='face box-front'><p>大家好</p></div>
+ <div class='face box-behind'><p>连轮回都没有</p></div>
+ <div class='face box-right'><p>可我是个小方块</p></div>
+ <div class='face box-left'><p>苍天饶过谁</p></div>
+ <div class='face box-top'><p>世间有轮回</p></div>
+ <div class='face box-bottom'><p>天道为何如此不公</p></div>
+ </div>
+ </div>
+  
+ </body>
+</html>
