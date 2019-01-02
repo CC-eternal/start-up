@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  .box{
+  margin:0 auto;
+  width:270px;
+  }
+  .box .box-one{
+  height:350px;
+  width:270px;
+  padding:5px;
+  border:2px solid #f1f1f1;
+  }
+  .box .box-two{
+  height:350px;
+  width:270px;
+  padding:5px;
+  border:2px solid #f1f1f1;
+  margin-top:20px;
+  }
+  .content{
+  width:95%;
+  height:95%;
+  margin:10px auto;
+  }
+  .images-one{
+  margin-left:5px;
+  }
+  p{
+  line-height:30px;
+  font-size:14px;
+  }
+  .text-one{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  }
+  span{
+  color:pink;
+  }
+
+
+
+
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+ <div class='box-one'>
+ <div class='content'>
+ <img src='images/pic1.jpg' class='images-one'>
+ <p class='text-one'>动画便利店很长很长很长很长很长很长很长很长很长很长</p>
+ <p class='text-two'><span><b>原创作品</b></span>-影视-Motion Griphic<br>
+ 3小时前上传<br>
+ <span>6666</span>&nbsp&nbsp人气/<span>66</span>&nbsp&nbsp评论/<span>66</span>&nbsp&nbsp推荐</p>
+ <img src='images/play.png' class='images-two'>
+ </div>
+ </div>
+ <div class='box-two'>
+ <div class='content'>
+ <img src='images/pic2.jpg' class='images-one'>
+ <p class='text-one'><b>动画便利店很长很长很长很长很长很长很长很长很长很长</b></p>
+ <p class='text-two'><span><b>原创作品</b></span>-影视-Motion Griphic<br>
+ 3小时前上传<br>
+ <span>6666</span>&nbsp&nbsp人气/<span>66</span>&nbsp&nbsp评论/<span>66</span>&nbsp&nbsp推荐</p>
+ <img src='images/play.png' class='images-two'>
+ </div>
+  </div>
+  </div>
+ </body>
+</html>

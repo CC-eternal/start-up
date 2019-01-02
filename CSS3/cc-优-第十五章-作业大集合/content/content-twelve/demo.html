@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  padding:0;
+  margin:0;
+  }
+  body{
+  background-color:#FFDFAD;
+  }  
+  .content{
+  position:fixed;
+  left:0;
+  right:0;
+  margin:50px auto;
+  width:1100px;
+  height:500px;
+  background-color:white;  
+  }
+  .content ul{
+  left:0;
+  list-style-type:none;
+  width:220px;
+  padding:20px;
+  background-color:#450E11;
+  }
+  .content ul li{
+  width:100%;
+  background-image:url(images/next.png);
+  background-position:right center;
+  background-size:17%;
+  background-repeat:no-repeat;
+  color:white;
+  line-height:46px;
+  font-weight:bold;
+  transition:0.5s;
+  }
+  .content ul li:hover{
+  background-color:#fd6701;
+  text-indent:10px;
+  }
+  .content ul li:hover+span{
+  position:absolute;
+  right:0;
+  top:0;
+  width:840px;
+  height:500px;
+  background-position:106% 101%;
+  background-size:13%;
+  background-color:white;
+  z-index:1;
+  }
+  .content .main{
+  position:absolute;
+  right:0;
+  top:0;
+  width:840px;
+  height:500px;
+  z-index:-1;
+  }
+ .content .main .background{
+  width:100%;
+  height:100%;
+  }
+   .content .main .background img{
+  width:100%;
+  height:100%;
+  }
+  .content .main .background .images-one{
+  position:absolute;
+  right:20px;
+  top:0;
+  bottom:0;
+  margin:auto;
+  width:30px;
+  height:40px;
+  background-image:url(images/arrow2.png);
+  background-repeat:no-repeat;
+  background-size:70%;
+  background-position:100% 100%;
+  }
+  .content .main .background .images-two{
+  position:absolute;
+  left:20px;
+  top:0;
+  bottom:0;
+  margin:auto;
+  width:30px;
+  height:40px;
+  background-image:url(images/arrow1.png);
+  background-repeat:no-repeat;
+  background-size:70%;
+  background-position:100% 100%;
+  }
+  .content .main .background .scroll{
+  position:absolute;
+  right:20px;
+  bottom:20px;
+  width:200px;
+  height:30px;
+  }
+  .scroll span{
+  display:inline-block;
+  width:25px;
+  height:25px;
+  margin:5px;
+  background-color:white;
+  border-radius:50%;
+  transition:2s;
+  }
+  .scroll span:hover{
+  background-color:purple;
+  }
+  .content ul .one{
+  background-image:url(images/2.jpg);
+  }
+  .content ul .two{
+  background-image:url(images/3.jpg);
+  }
+   .content ul .three{
+  background-image:url(images/4.png);
+  }
+  .content ul .four{
+  background-image:url(images/5.png);
+  }
+  .content ul .five{
+  background-image:url(images/6.jpg);
+  }
+  .content ul .six{
+  background-image:url(images/7.png);
+  }
+   .content ul .seven{
+  background-image:url(images/8.png);
+  }
+  .content ul .eight{
+  background-image:url(images/10.jpg);
+  }
+  .content ul .nine{
+  background-image:url(images/11.png);
+  }
+  .content ul .ten{
+  background-image:url(images/1.png);
+  }
+  </style>
+  </head>
+ <body>
+ <div class='content'>
+ <ul class='sidebar'>
+ <li>手机 电话盒</li>
+ <span class='one'></span>
+ <li>电视 盒子</li> 
+ <span class='two'></span>
+ <li>笔记本</li>
+ <span class='three'></span>
+ <li>智能 家电</li>
+ <span class='four'></span>
+ <li>健康 家居</li>
+ <span class='five'></span>
+ <li>出行 儿童</li>
+ <span class='six'></span>
+ <li>路由器 手机配件</li>
+ <span class='seven'></span>
+ <li>移动电源 插线板</li>
+ <span class='eight'></span>
+ <li>耳机 音箱</li>
+ <span class='nine'></span>
+ <li>生活 米兔</li>
+ <span class='ten'></span>
+ </ul>
+ <div class='main'>
+ <div class='background'>
+ <img src='images/1.jpg'>
+ <span class='images-one'></span>
+ <span class='images-two'></span>
+ <div class='scroll'>
+ <span></span>
+ <span></span>
+ <span></span>
+ <span></span>
+ <span></span>
+ </div>
+ </div>
+ </div> 
+ </body>
+</html>

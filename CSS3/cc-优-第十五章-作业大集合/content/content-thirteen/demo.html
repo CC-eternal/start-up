@@ -1,0 +1,141 @@
+<!doctype html><!--声明文档类型:html-->
+<html><!--超文本标记语言  根目录节点标签-->
+	<head><!--头部:给浏览器看的-->
+		<meta charset="utf-8"><!--字符编码:国际编码-->
+		<!--网页三要素 标题 关键词 描述-->
+		<title>网页文档的标题-海文老师</title>
+		<meta name="description" content="描述:对网页文档的大概的介绍">
+		<!--关键词:提供给搜索引擎搜索网站使用-->
+		<meta name="keywords" content="关键词1,关键词2">
+		<style>
+		*{
+		margin:0;
+		padding:0;
+		}
+		body{
+		perspective:800px;
+		}
+		.box{
+		position:relative;
+		height:200px;
+		width:200px;
+		margin:250px auto;
+		transform-style:preserve-3d;
+		transition:5s;
+		}
+		.box:hover{
+		 transform:rotateY(360deg);
+		 }
+		 .box:hover>.box-top{
+		 transform:translateZ(-100px) rotateX(180deg) ;
+		 }
+		 .box:hover .GR{
+		 transform:translateY(-300px);
+		 }
+		.box .son{
+		position:absolute;
+		height:200px;
+		width:200px;
+		border:1px solid black;
+		box-shadow:0 0 20px black inset;
+		}
+		.box .son p{
+		position:absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+		margin:auto;
+		width:50px;
+		height:20px;
+		font-size:20px;
+		}
+		.box .box-front{
+		transform:translateZ(100px);
+		}
+		.box .box-behind{
+		transform:rotateY(180deg) translateZ(100px);
+        }
+		.box .box-right{
+		transform:rotateY(90deg) translateZ(100px);
+		}
+		.box .box-left{
+		transform:rotateY(-90deg) translateZ(100px);
+		}
+		.box .box-bottom{
+		transform:rotateX(-90deg) translateZ(100px);
+		}
+		.box .box-top{
+		transform-origin:top center;
+		transition:3s;
+		transform: translateZ(-100px)rotateX(90deg);
+		}
+		.box .GR{
+		position:absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+		margin:auto;
+		width:100px;
+		height:100px;
+		transition:3s;
+		transform-style:preserve-3d;
+		}
+		.box .GR .gr{
+		position:absolute;
+		width:100px;
+		height:100px;
+		box-shadow:0 0 20px black inset;
+		}
+		.box .GR .GR-front{
+		transform:translateZ(50px);
+		background-image:url(images/1.jpg);
+		background-size:100% 100%;
+		}
+		.box .GR .GR-behind{
+		transform:rotateY(180deg) translateZ(50px);
+		background-image:url(images/2.jpg);
+		background-size:100% 100%
+        }
+		.box .GR .GR-right{
+		transform:rotateY(90deg) translateZ(50px);
+		background-image:url(images/3.jpg);
+		background-size:100% 100%
+		}
+		.box .GR .GR-left{
+		transform:rotateY(-90deg) translateZ(50px);
+		background-image:url(images/4.jpg);
+		background-size:100% 100%
+		}
+		.box .GR .GR-bottom{
+		transform:rotateX(-90deg) translateZ(50px);
+		background-image:url(images/5.jpg);
+		background-size:100% 100%
+		}
+		.box .GR .GR-top{
+		transform:rotateX(90deg) translateZ(50px);
+		background-image:url(images/6.jpg);
+		background-size:100% 100%
+		}
+		</style>
+	</head>
+	<body><!--身体 网页上可见的区域-->
+	<div class='box'>
+	<div class='son box-front'><p><b>front</b></p></div>
+	<div class='son box-behind'><p><b>behind</b></p></div>
+	<div class='son box-top'><p><b>top</b></p></div>
+	<div class='son box-bottom'><p><b>bottom</b></p></div>
+	<div class='son box-right'><p><b>right</b></p></div>
+	<div class='son box-left'><p><b>left</b></p></div>
+	<div class='GR'>
+	<div class='gr GR-front'></div>
+	<div class='gr GR-behind'></div>
+	<div class='gr GR-top'></div>
+	<div class='gr GR-bottom'></div>
+	<div class='gr GR-right'></div>
+	<div class='gr GR-left'></div>
+	</div>
+	</div>			
+	</body>
+</html>

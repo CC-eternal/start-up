@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  body{
+	background-color:#CCCCCC;
+  }
+  .box{
+  height:200px;
+  width:1120px;
+  margin:100px auto;
+  }
+  ul{
+  list-style:none;
+  }
+  ul li{
+  display:inline-block;
+  }
+  img{
+  display:inline-block;
+  height:120px;
+  width:130px;
+  margin:30px 0 0 45px;
+  
+  }
+  .box-one{
+  height:200px;
+  width:180px;
+  background-color:white;
+  padding:20px;
+  }
+
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+<ul>
+<li>
+<div class='box-one'>
+<p><b>大家电电年度盛典</b></p><p class='colors'>
+疯抢300元优惠劵</p>
+<img src='images/1.jpg' alt='图片无法显示'>
+</div>
+</li>
+<li>
+<div class='box-one'>
+<p><b>冬季孕妇毛衣专场</b></p><p class='colors'>
+时尚潮流温暖舒适</p>
+<img src='images/2.jpg' alt='图片无法显示'>
+</div>
+</li>
+<li>
+<div class='box-one'>
+<p><b>乔丹童鞋跑鞋</b></p><p class='colors'>
+释放双脚跑起来</p>
+<img src='images/3.jpg' alt='图片无法显示'>
+</div>
+</li>
+<li>
+<div class='box-one'>
+<p><b>双十一整车特卖</b></p><p class='colors'>
+贷款买车24期0利率</p>
+<img src='images/4.jpg' alt='图片无法显示'>
+</div>
+</li>
+<li>
+<div class='box-one'>
+<p><b>品牌岁末疯抢</b></p><p class='colors'>
+分期免息</p>
+<img src='images/5.jpg' alt='图片无法显示'>
+</div>
+</li>
+</ul>
+ </div>
+  
+ </body>
+</html>

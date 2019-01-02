@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  .box{
+  position:relative;
+  width:1350px;
+  height:650px;
+  }
+  .box img{
+  width:100%;
+  height:100%;
+  }
+  .box .content{
+  position:absolute;
+  right:0;
+  left:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  width:80%;
+  height:80%;
+  border:2px solid blue;
+  }
+  
+  .box .content ul{
+  list-style-type:none;
+  width:10%;
+  padding:10px;
+  
+  }
+   .box .content ul li{
+   margin:8px 0;
+   background-color:white;
+   box-shadow:0 0 30px 0 #A38B6B inset;
+   }
+   .box .content iframe{
+   position:absolute;
+   top:0;
+   bottom:0;
+   right:50px;
+   width:850px;
+   height:450px;
+   margin:auto;
+   background-color:white;
+   border:2px solid purple;
+   }
+
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+<img src='images/mxcp1.jpg'>
+ <div class='content'>
+ <iframe src='' name='a' frameborder='0'>
+ </iframe>
+ <ul>
+	<li>
+		<a href='content/content-one/demo.html' target='a'>第一次作业</a>
+		</li>
+	<li>
+		<a href='content/content-two/demo.html' target='a'>第二次作业</a>
+		</li>
+	<li>
+		<a href='content/content-three/demo.html' target='a'>第三次作业</a>
+		</li>
+	<li>
+		<a href='content/content-four/demo.html' target='a'>第四次作业</a>
+		</li>
+	<li>
+		<a href='content/content-five/demo.html' target='a'>第五次作业</a> 
+		</li>
+	<li>
+		<a href='content/content-six/demo.html' target='a'>第六次作业</a>
+		</li>
+	<li>
+		<a href='content/content-seven/demo.html' target='a'>第七次作业</a>
+		</li>
+	<li>
+		<a href='content/content-eight/demo.html' target='a'>第八次作业</a>
+		</li>
+	<li>
+		<a href='content/content-nine/demo.html' target='a'>第九次作业</a>
+		</li>
+	<li>
+		<a href='content/content-ten/demo.html' target='a'>第十次作业</a>
+		</li>
+	<li>
+		<a href='content/content-eleven/demo.html' target='a'>第十一次作业</a>
+		</li>
+	<li>
+		<a href='content/content-twelve/demo.html' target='a'>第十二次作业</a>
+		</li>
+	<li>
+		<a href='content/content-thirteen/demo.html' target='a'>第十三次作业</a>
+		</li>
+	<li>
+		<a href='content/content-fourteen/demo.html' target='a'>第十四次作业</a>
+		</li>
+	<li>
+		<a href='content/content-fifteen/demo.html' target='a'>第十五次作业</a>
+		</li>
+	<li>
+		<a href='content/content-sixeenth/demo.html' target='a'>第十六次作业</a>
+		</li>
+	<li>未完待续</li>
+ </ul>
+ 
+ </div>
+ </div>
+  
+ </body>
+</html>

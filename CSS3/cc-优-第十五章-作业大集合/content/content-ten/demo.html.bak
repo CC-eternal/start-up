@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  .box{
+  background-image:url('images/topbg.jpg');
+  height:450px;
+  margin-top:0;
+  }
+  .box-two{
+  width:60%;
+  background-repeat:no-repeat;
+  vertical-align:middle;
+  left:200px;
+  margin:0 auto;
+  }
+  .box-one{
+  width:200px;
+  height:80px;
+  float:left;
+  margin-top:20px;
+  }
+  .images-first{
+  float:right;
+ 
+  }
+  a{
+  padding:20px 40px;
+  text-decoration:none;
+  color:white;
+  line-height:40px;
+  display:inline-block;
+  }
+  .image{
+  background-image:url('images/btn2.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  }
+  {
+  float:left;
+  padding:5px;
+  }
+
+  </style>
+ </head>
+ <body>
+  <div class='box'>
+  <div class='box-one' class='image'>
+  <img src="images/weixin.png" alt='图片无法显示' class='images-first'>
+  </div>
+ 
+  <div class='box-two'>
+  <a href="" class='image'>首页</a>
+  <a href="">帮助</a>
+  <a href="">公众</a>
+  <a href="">微信</a>
+  <a href="">支付</a>
+  <a href="">网页版</a>
+  <a href="">表情</a>
+  <a href="">广告</a>
+  </div>
+ 
+  </div>
+ </body>
+</html>
