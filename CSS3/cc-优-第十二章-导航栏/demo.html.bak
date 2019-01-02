@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  body{
+  background-color:black;
+  }
+  .box .nav{
+  position:relative;
+  list-style-type:none;
+  width:500px;
+  margin:100px auto;
+  }
+  .clearfix:after{
+  content:'';
+  display:block;
+  clear:both;
+  }
+  .box .nav li{
+  float:left;
+  padding:0 25px;
+  width:46px;
+  border:2px solid white;
+  background-color:blue;
+  line-height:40px;
+  color:white;
+  }
+
+  span{
+  display:block;
+  }
+   .box .nav .drop{
+  display:none;
+  padding:0 10px;
+  width:76px;
+  }
+  .box .nav li:hover+li{
+  display:block;
+  }
+  .one{
+  position:absolute;
+  top:42px;
+  }
+  .two{
+  position:absolute;
+  top:42px;
+  left:100px;
+  }
+  .three{
+  position:absolute;
+  top:42px;
+  left:200px;
+  }
+  .four{
+  position:absolute;
+  top:42px;
+  left:300px;
+  }
+  .five{
+  position:absolute;
+  top:42px;
+  left:400px;
+  }
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+ <ul class='nav clearfix'>
+ <li>首页</li>
+ <li class='one drop'>
+ <span>关于我们</span>
+ <span>了解我们</span>
+ <span>我们的团队</span>
+ </li>
+ <li>HTML</li>
+ <li class='two drop'>
+ <span>p</span>
+ <span>span</span>
+ <span>h2</span>
+ <span>ul</span>
+ <span>li</span>
+ </li>
+ <li>css</li>
+ <li class='three drop'>
+ <span>width</span>
+ <span>height</span>
+ <span>background</span>
+ </li>
+ <li>js</li>
+ <li class='four drop'>
+ <span>window</span>
+ <span>document</span>
+ <span>sum</span>
+ <span>Date</span>
+ </li>
+ <li>h5</li>
+ <li class='five drop'>
+ <span>nav</span>
+ <span>fool</span>
+ <span>head</span>
+ </li>
+ </ul>
+ </div>
+ </body>
+</html>
