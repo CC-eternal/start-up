@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+ *{
+  margin:0;
+  padding:0;
+  }
+ .box{
+ height:370px;
+ width:1200px;
+ margin:20px auto;
+ background-color:red;
+ position:relative;
+
+ }
+  .box-image{
+  background-image:url(images/1.jpg);
+  background-size:100%;
+  background-repeat:no-repeat;
+  height:100%;
+  width:82%;
+  margin-left:216px;
+  
+  }
+  .box-image .box-one{
+  background-image:url(images/arrow2.png);
+  background-size:100%;
+  background-repeat:no-repeat;
+  height:30px;
+  width:15px;
+  position:absolute;
+  right:10px;
+  top:0;
+  bottom:0;
+  margin:auto;
+  }
+  .box-image .box-two{
+  background-image:url(images/arrow1.png);
+  background-size:100%;
+  background-repeat:no-repeat;
+  height:30px;
+  width:15px;
+  position:absolute;
+  left:225px;
+  top:0;
+  bottom:0;
+  margin:auto;
+  }
+  .box-image .list-one{
+  position:absolute;
+  right:25px;
+  bottom:10px;
+  list-style-type:none;
+  }
+  .box-image .list-one li{
+  border-radius:50%;
+  width:20px;
+  height:20px;
+  margin:5px;
+  background-color:#ccc;
+  float:left;
+  }
+  #white{
+  background-color:white;
+  }
+
+
+ .box .list-two{
+ position:absolute;
+ left:0;
+ top:0;
+ width:177px;
+ height:330px;
+ list-style-type:none;
+ padding:20px;
+ background-color:#460D0D;
+ }
+ .box .list-two li{
+ background-image:url(images/next.png);
+ background-repeat:no-repeat;
+ background-position:right;
+ color:white;
+ line-height:33px;
+ }
+
+
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+ <div class='box-image'>
+ <div class='box-one'></div>
+ <div class='box-two'></div>
+ <ul class='list-one'>
+ <li id='white'></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ </ul>
+ </div>
+ <ul class='list-two'>
+<li>手机 电话卡</li>
+<li>电视 盒子</li>
+<li>笔记本</li>
+<li>智能 家电</li>
+<li>健康 家居</li>
+<li>出行 儿童</li>
+<li>路由器 手机配件</li>
+<li>移动电源 插线板</li>
+<li>耳机 音盒</li>
+<li>生活 米兔</li>
+ </ul>
+</div>
+</body>
+</html>
