@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  .container {
+  position:relative;
+  width:100%;
+  height:500px;
+  background-image:url(images/ad2500x600.jpg);
+  background-position:50% 80%;
+  background-repeat:no-repeat;
+  }
+  .container .content{
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:100px;
+  width:275px;
+  height:275px;
+  padding:25px;
+  margin:auto;
+  background-color:white;
+  }
+   .container .content span{
+   position:absolute;
+   right:0;
+   top:0;
+   width:60px;
+   height:60px;
+   background-image:url(images/2wm1.gif);
+   background-position-x:10px;
+   background-repeat:no-repeat;
+   }
+   .container .content form input{
+    width:255px;
+	height:40px;
+	margin:15px 0;
+	border:1px solid #CCCCCC;
+	}
+	[type=text]{
+	background-image:url(images/acc.gif);
+	background-repeat:no-repeat;
+	background-size:contain;
+	}
+	[type=password]{
+	background-image:url(images/pwd.gif);
+	background-repeat:no-repeat;
+	background-size:contain;
+	}
+	[type=submit]{
+	background-color:#FF4400;
+	color:white;
+	font-size:20px;
+	}
+	.container .content form button{
+	margin:15px 5px;
+	background-color:white;
+	border:none;
+	}
+
+
+   
+  </style>
+ </head>
+ <body>
+ <div class='container'>
+	<div class='content'>
+		<span></span>
+		<form namr='' action='' method=''>
+			<h3>密码登录</h3>
+			<input type='text' placeholder='&nbsp&nbsp&nbsp&nbsp&nbsp会员/邮箱/手机号'> 
+			<input type='password'>
+			<input type='submit' value='登录'>
+			<button><img src='images/wb.gif'>微信登录</button>
+			<button><img src='images/zfb.gif'>支付宝登录</button>
+		</form>
+	</div>
+ </div>
+ </body>
+</html>
