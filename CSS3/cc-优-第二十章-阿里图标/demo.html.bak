@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel='stylesheet' href='iconfont/iconfont.css'>
+  <title>Document</title>
+  <style>
+	*{
+	padding:0;
+	margin:0;
+	}
+	body{
+	background-color:black;
+	}
+	.nav{
+	width:200px;
+	margin:50px auto;
+	}
+	.nav ul{
+	list-style-type:none;
+	width:100%;
+		opacity:.9;
+	
+	}
+	.nav ul li{
+	width:100%;
+	padding:8px 15px;
+	background-color:#696969;
+	color:white;
+
+	}
+	.nav ul li i{
+	margin-right:10px;
+	}
+	.nav ul li:nth-child(1){
+	background-color:red;
+	font-weight:bold;
+	}
+
+	
+	
+  </style>
+ </head>
+ <body>
+ 
+ <div class='nav'>
+	<ul>
+		<li>
+			<i class='iconfont icon-category'></i>
+			<span>商品分类</span>
+		</li>
+		<li>
+			<i class='iconfont icon-nvzhuang'></i>
+			<span>女装/内衣</span>
+		</li>
+		<li>
+			<i class='iconfont icon-17'></i>
+			<span>男装/运动户外</span>
+		</li>
+		<li>
+			<i class='iconfont icon-shoes'></i>
+			<span>女鞋/男鞋/箱包</span>
+		</li>
+		<li>
+			<i class='iconfont icon-beauty'></i>
+			<span>美妆/个人护理</span>
+		</li>
+		<li>
+			<i class='iconfont icon-creditlevel'></i>
+			<span>腕表/眼睛/珠宝饰品</span>
+		</li>
+		<li>
+			<i class='iconfont icon-electronics'></i>
+			<span>手机/数码/电脑办公</span>
+		</li>
+		<li>
+			<i class='iconfont icon-wanju'></i>
+			<span>母婴玩具</span>
+		</li>
+		<li>
+			<i class='iconfont icon-lingshi'></i>
+			<span>零食/茶酒/进口食品</span>
+		</li>
+		<li>
+			<i class='iconfont icon-shuiguo'></i>
+			<span>生鲜水果</span>
+		</li>
+		<li>
+			<i class='iconfont icon-electrical'></i>
+			<span>大家电/生活器材</span>
+		</li>
+		<li>
+			<i class='iconfont icon-home'></i>
+			<span>家具建材</span>
+		</li>
+		<li>
+			<i class='iconfont icon-auto'></i>
+			<span>汽车/配件/鲜花</span>
+		</li>
+		<li>
+			<i class='iconfont icon-mobilephone'></i>
+			<span>医药保健</span>
+		</li>
+		<li>
+			<i class='iconfont icon-toys'></i>
+			<span>厨具/收纳/宠物</span>
+		</li>
+		<li>
+			<i class='iconfont icon-tushu'></i>
+			<span>图书音像</span>
+		</li>
+
+	</ul>
+ </div>
+  
+ </body>
+</html>
