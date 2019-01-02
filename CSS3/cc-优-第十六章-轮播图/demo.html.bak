@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  *{
+  margin:0;
+  padding:0;
+  }
+  .box{
+  position:relative;
+  width:540px;
+  height:500px;
+  margin:50px auto;
+  box-shadow:0 0 20px 0 black;
+  }
+  .box input{
+  display:none;
+  }
+
+  .box label{
+  display:inline-block;
+  position:relative;
+  top:409px;
+  width:94px;
+  height:80px;
+  border:5px solid #ccc;
+  }
+  .box label img{
+  width:100%;
+  height:100%;
+  }
+
+  .box input:checked+label{
+   border:5px solid red;
+   }
+   .box>img{
+   position:absolute;
+   top:0;
+   left:0;
+   width:0;
+   transition-duration:.1s;
+   }
+   .box input:checked+label+img{
+   width:540px;
+   }
+  </style>
+ </head>
+ <body>
+ <div class='box'>
+		<input type='radio' name='link' id='one'  checked='checked'>
+			<label for='one'><img src='images/1.jpg'></label>
+			<img src='images/1.jpg'>
+		<input type='radio' name='link' id='two'>
+			<label for='two'><img src='images/2.jpg'></label>
+			<img src='images/2.jpg'>
+		<input type='radio' name='link' id='three'>
+			<label for='three'><img src='images/3.jpg'></label>
+			<img src='images/3.jpg'>
+		<input type='radio' name='link' id='four'>
+			<label for='four'><img src='images/4.jpg'></label>
+			<img src='images/4.jpg'>
+		<input type='radio' name='link' id='five'>
+			<label for='five'><img src='images/5.jpg'></label>
+			<img src='images/5.jpg'>
+ </div>
+  
+ </body>
+</html>
