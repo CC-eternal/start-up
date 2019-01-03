@@ -1,0 +1,62 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	</style>
+	</head>
+	<body>
+	<script>
+	//把小写字母转大写
+	/*
+		1.遍历字符串
+		2.判断=>如果小写，转成大写，其余不变
+		3.把结果抛出来
+	*/
+	var newStr='aVadxS';
+	function fn(str){
+		var result ="";
+		for(var i=0;i<str.length;i++){
+			var charCode = str.charCodeAt(i);
+			if(charCode>=97&charCode<=122){
+				result+=String.fromCharCode(charCode-32);
+			}else{
+				result+=str[i];
+			}
+		}
+		return result;
+	}
+	var big=fn(newStr);
+	document.write(big);
+	//打印四个随机数
+	/*
+	1.Math.random()取[0,1)之间的随机数
+	2.在循环中拿四次
+	*/
+	function rad(){
+		var num='1234567890zaqxswcdevfrbgtnhymjukilopZAQXSWCDEVFRBGTNHYMJUKILOP';
+		var q="";
+		for(var i = 0;i<4;i++){
+			var dig = parseInt(Math.random()*num.length);
+			if (q.indexOf(num[dig])!==-1) {
+				i--;
+				continue;	
+			}
+			q += num[dig];
+		}
+		return q
+	}
+	var a = rad()
+	console.log(a)
+	
+	
+	</script>
+	</body>
+	</html>

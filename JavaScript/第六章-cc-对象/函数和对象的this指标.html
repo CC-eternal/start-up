@@ -1,0 +1,268 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	</style>
+	</head>
+	<body>
+	<script>
+//第一题
+	/*GO{
+		foo:"bar"
+		fun:fn
+	}
+	AO(fun){
+		this:obj
+		self:obj
+	}
+		*/
+
+	var obj = {
+		foo:'bar',
+		fun:function(){
+			var self = this;
+			console.log('this.foo=' + this.foo);	//=>this.foo=bar
+			console.log('self.foo=' + self.foo);	//=>self.foo=bar
+			(function(){
+				console.log('this.foo=' + this.foo);	//=>this.foo=function
+				console.log('self.foo=' + self.foo);	//=>self.foo=bar
+			})()
+		}
+	}
+	obj.fun();
+
+//第二题
+	/*GO{b=3}
+	fn{a=3}*/
+	(function(){
+		var a = b = 3;
+	})()
+	console.log(typeof a !=='undefined');	//=>true
+	console.log(typeof b !=='undefined');	//=>false
+	/*GO{a=1;
+		c=0,
+		b=0}
+	fn(add)={
+		function add(n){
+		return n = n*5;
+		}
+	}
+		
+	*/
+	var a = 1,
+		b = c = 0;
+	function add(n){
+
+		return n = n + 3;
+	}
+	y = add(a);		//=>5
+	function add(n){
+		return n = n*5;
+	}
+	z = add(a);		//=>5
+	console.log(y,z);	//=>5,5
+//第三题
+	var result = false===1;
+	console.log(result);	//=>false
+
+	//第一步："undefined" && -1 + NaN + '';
+	//第二步："undefined" && 'NaN'
+	//结果：true
+
+	if(typeof c&&-true+ (+undefined)+''){	
+	/*抛出*/	console.log('l am ok');
+	}
+	if(22+'33'*2==88){
+	/*抛出*/	console.log('我还能做十道');
+	}
+	//第一步：true + false + 0 || 。。。
+	//第二步：1 || ...
+	//结果：1
+	!!' '+!!'' -!!false||consoel.log('我选择go die');
+//第四题
+	/*GO{
+		length=10,
+		fn = fn
+		obj = {}
+	}
+	fn(fn){
+		this = obj;
+	}
+	fn
+
+	*/
+	var length = 10;
+	function fn(){
+		console.log(this.length);	
+	}
+	var obj = {
+		length:5,
+		method:function(fn){
+			console.log(this.length);	//=>5
+			fn();	//=>10
+			arguments[0]();	//=>2？？ this指向实参列表本身？？？
+		}					//数组对象也会改变this指标
+	}
+	obj.method(fn,1);
+
+
+//第五题
+	/*
+	GO{x=10,a=fn,y=fn
+	}
+	AO(a){this=window,,
+	}
+	*/
+	var x = 10;
+	function myA(){
+		y = function(){
+			x = 2;
+		}
+		console.log(this);	//=>window
+		return function(){
+			var x = 3;
+			y();
+			console.log(this.x); //=>2
+		}.apply(this)	//this指向window
+	}
+	myA();	//=>报错
+	console.log(y);	//=>5 ???
+
+//第六题
+	//第一步：++[[]][0] + [0]
+	//第二步：++[] + [0]
+	//第三步：1 + [0]
+	//第四步："10"
+	console.log(++[[]][+[]] + [+[]])
+
+//第七题
+	/*GO{name = 'The Window',
+		objdect = obj,
+		result = undefined
+	}
+	AO{
+	}
+	*/
+	var name = 'The Window';
+	var object = {
+		name : "My Object",
+		getNameFunc : function(){
+			return function(){
+				return this.name;
+			};
+		}
+	};
+	var result = object.getNameFunc();
+	console.log(result());	//=>"The Window" ????
+							//=>result() 自调用
+
+//第八题
+	/*
+	GO{
+		name='The Window'
+		object = obj
+	}
+	AO{
+		this = object
+		that = object
+	}
+	*/
+	var name = 'The Window';
+	var object = {
+		name : "My Object",
+		getNameFunc : function(){
+			var that = this;
+			return function (){
+				return that.name;
+			};
+		}								//闭包
+	};
+	var result = object.getNameFunc();	//=>"My Object"
+	console.log(result());
+
+//第九题
+	/*GO{
+		a:{}
+		b:{}
+	}
+	*/
+
+	var a = {n:1};	//=>地址2 {m:1}
+	var b = a;		//=>地址1 {n:{m:1}}
+	a.n = a = {m:1};
+	console.log(a);
+	console.log(b);
+
+//第十题，终极题目
+	/*
+		GO{
+			fun:fn,
+		}
+		AO{
+			
+		}
+	*/
+	function fun(n,o) {
+		console.log(o);
+		return {
+			fn:function(m){
+				return fun(m,n);
+			}
+		};
+	}
+	var a = fun(0);	/*	{
+					fn:function(m){
+					return fun(m,0);
+					}	*/
+		a.fn(1);	//=>fun(1,0)
+		a.fn(2);	//=>fun(2,0)
+		a.fn(3);	//=>fun(3,0)
+	var b = fun(0).fn(1).fn(2).fn(3);	//=>
+	var c = fun(0).fn(1);
+	    c.fn(2);
+	    c.fn(3);
+
+//补充 this
+	/*
+		GO{
+			name:'阿飞'，
+			a : {},
+			b : {}
+		}
+		AO(a){
+			this:a
+		}
+		AO(b){
+			this:window
+		}
+	*/
+	var name = '阿飞';
+	var a = {
+		name : "小浪"，
+		say : function(){
+			console.log(this.name);	//=>"阿飞"
+		}
+	}
+	var fun = a.say;
+	fun();
+	a.say()	//=>"小浪"
+	var b = {
+		name : "朱雀"，
+		say : function(fun){
+			fun();
+		}
+	}
+	b.say(a.say);	//="阿飞"
+	b.say = a.say;	
+	b.say();		//=>"朱雀"
+	</script>
+	</body>
+	</html>

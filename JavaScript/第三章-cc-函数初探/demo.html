@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="关键词">
+  <meta name="Description" content="内容">
+  <title>cc</title>
+  <style>
+	*{ margin:0px;  padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+  </style>
+ </head>
+ <body>
+
+  <script>
+ //一百以内所有奇数的和
+	for (var i=1,sum=0;i<100 ;i+=2 )
+	{
+		 sum = sum+i;
+	}
+	document.write("<b>一百以内所有奇数的和:</b>"+sum+"<br>")
+	
+
+	function fn(num){
+		if (num===1)
+		{
+			return 1;
+		}
+		return num+fn(num-2);
+	}
+	var a=fn(99)
+	document.write("<b>一百以内所有奇数的和:</b>"+a+"<br>")
+//一百以内所有偶数的积
+	for (var i=2,acc=1;i<=100 ;i+=2 )
+	{
+		acc=acc*i;
+	}
+	document.write("<b>一百以内所有偶数的积:</b>"+acc+"<br>")
+	function fnOne(i){
+		if (i===0)
+		{
+			return 1;
+		}
+		return i*fnOne(i-2);
+	}
+	var aOne=fnOne(100)
+	document.write("<b>一百以内所有偶数的积:</b>"+aOne+"<br>");
+//输出斐波那契数列的第n项
+	document.write("<b>斐波那契数列前十一项:</b><br>")
+	var x=1;
+	var y=1;
+	var z=2;
+	for (var i=0;i<10;i++ )
+	{
+		if (i===0||i===1)
+		{
+			z=1;
+		}else{
+		x=y;
+		y=z;
+		z=x+y;
+		}
+		document.write("第"+(i+1)+"项:"+z+"<br>");
+	}
+
+	function fnTwo(aTwo){
+		if (aTwo===1||aTwo===2)
+		{
+			return 1;
+		}
+	return fnTwo(aTwo-1)+fnTwo(aTwo-2);
+	}
+	var	bTwo=fnTwo(11);
+	document.write("第十一项"+bTwo+"<br>");
+//for循环打印九九乘法表
+	document.write("<b>九九乘法表：</b><br>")
+	for (i=1;i<=9 ;i++ )
+	{
+		for (var q=1;q<=i ;q++ )
+		{
+			document.write(i+"*"+q+"="+i*q+"&nbsp&nbsp&nbsp&nbsp");
+		}
+		document.write("<br>");
+	}
+//输出一百之内所有的质数
+	document.write("<b>一百以内的所有质数：</b><br>");
+	for (var i=1;i<100 ;i++ )
+	{
+		var sum=0;
+		for (var q=1;q<=i ;q++ )
+		{	
+			if (i%q===0)
+			{
+				sum++;
+			}
+		}
+		if (sum==2)
+		{
+			document.write(i+"&nbsp&nbsp");
+		}
+	}
+//输出一百之内所有含有7或者7的倍数的数字
+	document.write("<br><b>一百以内所有含有7或者7的倍数的数字:</b><br>")
+	for (var i=1;i<=100 ;i++ )
+	{
+		if (i%7===0||parseInt(i/10)===7||i/10===7)
+		{
+			document.write(i+"&nbsp&nbsp")
+		}
+	}
+//输出数组中值为奇数的平均数
+	document.write("<br><b>输出[1,22,33,44,55,66,77]数组中值为奇数的平均数：</b><br>")
+	function fnThree(aThree){
+		var sum=0,num=0;
+		for (var i=0;i<aThree.length ;i++ )
+		{
+			if (aThree[i]%2!==0)
+			{
+				sum+=aThree[i];
+				num++;
+			}
+		}
+		return sum/num;
+	}
+	var arr=fnThree([1,22,33,44,55,66,77])
+	document.write(arr);
+//输出数组中最大值及其索引值，最小值及其索引值
+	document.write("<br><b>输出数组中最大值及其索引值，最小值及其索引值:</b><br>")
+	function fnFour(aFour){
+		var min=aFour[0],minIndex=0,max=aFour[0],maxIndex=0;
+		for (var i=1;i<aFour.length ;i++ )
+		{
+			if (min>aFour[i])
+			{
+				min=aFour[i];
+				minIndex=i;
+			}
+			if (max<aFour[i])
+			{
+				max=aFour[i];
+				maxIndex=i;
+			}
+		}
+		return [max,maxIndex,min,minIndex];
+	}
+	var Arr=fnFour([1,22,33,44,55,66,77]);
+	document.write(Arr);
+//求1-100之内所有能被3并且5整除的数字和
+	document.write("<br><b>求1-100之内所有能被3并且5整除的数字和:</b><br>")
+	/*var sumM=0;
+	for (var i=1;i<100 ;i++ )
+	{
+		
+		if (i%3===0&&i%5===0)
+		{
+			sumM=i;
+			sumM+=sumM;
+		}
+		
+	}document.write(sumM+"<br>");
+	*/
+
+	function fnFive(aFive){
+		if (aFive===0)
+		{
+			return 0;
+		}
+		if (aFive%3===0&&aFive%5===0)
+		{
+			return aFive+fnFive(aFive-1);
+		}
+		return fnFive(aFive-1);
+	}
+	var sumS=fnFive(100);
+	document.write(sumS);
+
+  </script>
+ </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="关键词">
+  <meta name="Description" content="内容">
+  <title>cc</title>
+  <style>
+	*{ margin:0px;  padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	body{
+	background-image:url("images/1.jpg");
+	background-size:cover;
+	}
+	.box{
+	position:relative;
+	width:982px;
+	height:500px;
+	margin:50px auto;
+	background-color:rgba(255,255,0,.2);
+	border:2px solid white;
+	box-shadow: 0 0 30px 0 orange;
+	}
+	.box div{
+	position:absolute;
+	bottom:0;
+	display:inline-block;
+	width:20px;
+	height:100px;
+	transition-duration:.4s;
+	/* background-color:purple; */
+	}
+	.vessel{
+	position:relative;
+	width:500px;
+	height:100px;
+	margin-left:615px;
+	}
+	.vessel .btn{
+	position:absolute;
+	width:50px;
+	height:50px;
+	border:2px solid #ccc;
+	background-color:rgba(255,255,255,.2);
+	font-size:20px;
+	text-align:center;
+	color:white;
+	line-height:45px;
+	box-shadow:0 0 10px 0 #ccc;
+	}
+	.vessel audio{
+	opacity:0;
+	}
+  </style>
+ </head>
+ <body>
+ 
+ <div class="box"></div>
+ <div class='vessel'>
+	<div class="btn">播放</div>
+	<audio src="audivo/1.mp3" controls loop></audio>
+</div>
+  <script>
+  var oBox = document.getElementsByClassName("box")[0];
+  var cR = ["red","green","blue","yellow","orange","pink","purple","brown","aqua","fuchsia"]
+  for(var i = 0;i<32;i++){	//生成div
+	var oDiv = document.createElement('div');
+	oBox.appendChild(oDiv);
+	oDiv.style.marginLeft = i*31+'px';
+	}
+  var aDiv = oBox.querySelectorAll(".box div");	//存放着所有div
+	function ran(){
+		for(var i = 0;i<aDiv.length;i++){
+			var colorOne = cR[parseInt(Math.random()*10)];
+			var colorTwo = cR[parseInt(Math.random()*10)];
+			var ranHeight = Math.random()*300;
+			if(colorOne!==colorTwo){					//当两次颜色不同时执行
+				aDiv[i].style.backgroundImage = 'linear-gradient('+colorOne+' 0%,'+colorTwo+' 100%)';//随机渐变色
+				aDiv[i].style.height= 100+ranHeight+'px';//随机高度
+			}else{
+				i--
+			}
+		}
+	}
+	ran();
+	setInterval(ran,500)
+	
+  </script>
+ </body>
+</html>

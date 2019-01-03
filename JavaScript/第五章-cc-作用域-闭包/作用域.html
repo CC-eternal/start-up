@@ -1,0 +1,155 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键词">
+  <meta name="Description" content="内容">
+  <title>标题</title>
+  <style>
+  *{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+  a{text-decoration:none;}
+  ul,li{list-style-type:none;}
+  img{border:none;}
+  </style>
+  </head>
+  <body>
+  <script>
+/*
+//作用域-1
+  //GO{foo:fn,bar:fn,host:fn,}
+  //AO(host){foo:fn,bar:undefined}
+  function foo(){
+    console.log("海文");
+  }
+  function bar(){
+    console.log("海文");
+  }
+  function host(){
+    console.log(typeof foo);  //=>"function"
+    console.log(typeof bar);  //=>"undefined"
+    foo();  
+    bar();  
+    function foo(){
+      console.log("heaven");
+    }
+    var bar = function(){
+      consoloe.log("heaven");
+    }
+  }
+ 
+//作用域-2
+//GO{a:1,b:0,c:0,add:fn;}
+//AO{n:undefined}
+  var a = 1,
+  b = c = 0;
+  function add(n){
+    return n = n + 3;
+  }
+  y = add(a); //=>4
+  function add(n){
+    return n = n + 3;
+  }
+  z = add(a); //=>4
+
+  //作用域·-3
+  //GO{a:2,auto:fn}
+  //AO{a:undefined}
+  var a = 2;
+  function auto(a){
+    if (typeof a) {
+      console.log("海文");
+    }else{
+      console.log("heaven");
+    }
+    var a;
+  }
+  auto()  //=>海文
+  
+  //作用域-3
+  //GO{a:2,fn:undefined}
+  var a = 2;
+  var fn = function auto(a){
+    if (typeof a) {
+      console.log("海文");
+    }else{
+      console.log("heaven");
+    }
+    var a;
+  }
+  auto(); //=>undefined
+
+  //作用域-4
+  //Go{auto:fn}
+  //AO{a:undefin}
+  function auto(a){
+    if (a) {
+      console.log("海文");
+    }else{
+      var a;
+      console.log("heaven");
+    }
+  }
+  auto("undefined"); //=>海文
+
+//作用域-5
+//GO{auto:fn}
+//AO{a:fn,}
+function auto(a){ 
+  console.log(a); //=>"function"
+  function a(){};
+  var a = 2;
+  console.log(a); //=>"2"
+}
+auto('undefined')
+
+//作用域-6
+//GO{auto:fn}
+//AO{a:fn}
+function auto(a){
+  console.log(a); //=>function a(){}
+  function a(){};
+  var a = 2;
+  var a = function a(){
+    console.log(1); 
+  }
+  console.log(a); //=>function a(){console.log(1)}
+}
+auto("undefined")
+
+//作用域-7
+//GO{x:1}
+var x = 1;
+if(function fn(){}){
+  x += typeof fn; 
+}
+console.log(x)  //=>1undefined
+*/
+//作用域-8
+//逗号取后面
+var f =(function f(){
+  return 'heaven';
+},
+function g(){
+  return 2
+})();
+typeof f 
+ //等价于
+ /*var f=function(){
+  return 2
+}() //=>"number"
+*/
+//作用域-9
+//Go{scareMe:fn,}
+//Ao{scareMe}
+var scareMe = function (){
+  console.log("Boo"); //第一次“Boo"
+  scareMe = function(){
+    console.log ("Double boo");//第二次"Double boo"
+  }
+}
+scareMe();
+scareMe();
+
+  </script>
+  </body>
+  </html>

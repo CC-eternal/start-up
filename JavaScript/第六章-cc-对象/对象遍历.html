@@ -1,0 +1,28 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	</style>
+	</head>
+	<body>
+	<script>
+	var obj = {
+		name:"heaven",
+		old:10,
+		sex:"woman"
+	}
+	for(var attr in obj){
+		//遍历属性	//遍历属性值
+		console.log(attr,obj[attr],typeof attr,typeof obj[attr]);
+	}
+	</script>
+	</body>
+	</html>

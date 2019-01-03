@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="关键词">
+  <meta name="Description" content="内容">
+  <title>cc</title>
+  <style>
+	*{ margin:0px;  padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+  </style>
+ </head>
+ <body>
+
+  <script>
+	/* 
+	1.var num = parseFloat("height:20.3px");
+	if (num == 20.3)
+	{
+		console.log(20.3);
+	}else if (num == NaN)
+	{
+		console.log(NaN);
+	}else if (typeof num == "number")
+	{
+		console.log("number");
+	}else {
+		console.log("其他");
+	} */
+
+//打印出一个正方形
+	document.write("<b>1.长方形</b><br>")
+	for (var i=0;i<8 ;i++ )
+	{
+		for (var x=0;x<8;x++ )
+		{
+			document.write("●")
+		}
+		document.write("<br>")
+	}
+//某侦察队接到一项紧急任务，要求在A,B,C,D,E,F六个队友中尽可能多的调若干人，
+	document.write("<b>2.从左至右分别表示A.B.C.D.E.F；1表示：去，0表示：不去，</b><br>")
+	for (var A=0;A<=1 ;A++ )
+	{
+		for (var B=0;B<=1 ;B++ )
+		{
+			for (var C=0;C<=1 ;C++ )
+			{
+				for (var D=0;D<=1 ;D++ )
+				{
+					for (var E=0;E<=1 ;E++ )
+					{
+						for (var F=0;F<=1 ;F++ )
+						{
+							if (A+B>=1&&A+D<=1&&A+E+F>=2&&B+C!==1&&C+D===1&&(D+E===0||D+E===2))
+							{
+								document.write(A,B,C,D,E,F+"<br>");
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+//绘制三角形
+	document.write("<b>3.三角图</b><br>")
+	for (var i=0,y="",x = "●";i<5 ;i++ )
+	{ 
+		y+=x
+		document.write(y+"<br>");
+	}
+//绘制两个三角形
+	document.write("<b>4.组合图/<b><br>");
+	for (x=0;x<5;x++)
+	{
+		for (i=0;i<5-x-1;i++)
+		{ 
+			document.write("□");
+		}
+		for (i=0;i<1+x ;i++ )
+		{
+			document.write("●");
+		}
+		document.write("<br>");
+	}
+//有一对幼兔，幼兔一个月后长成小兔，小兔一个月后长成大兔并生下一对小兔
+	document.write("<br><b>5.一年后兔子个数:</b><br>");
+	var big=0,middle=0,small=1;
+	for (var i=2;i<=12 ;i++ )
+	{
+		middle=small;
+		big+=middle;
+		small=big;
+	}
+	document.write("一年后成兔个数："+big+"小兔个数："+middle+"幼兔个数:"+small+"<br>");
+//求一千以内的所有水仙花数
+	document.write("<b>6.一千以内所有水仙花数：</b><br>");
+	var one=0,ten=0,hundred=0;
+	for (var i=1;i<1000 ;i++)
+	{
+		if (i>1&&i<10)
+		{
+			one=i;
+			if (i===Math.pow(one,3))
+			{
+				document.write(i+"<br>");
+			}
+		}else if (10<=i<100)
+		{
+			one=i%10;
+			ten=parseInt(i/10);
+			if (i===Math.pow(one,3)+Math.pow(ten,3))
+			{
+				document.write(i+"<br>");
+			}
+		}
+		else if (100<=i<1000)
+		{
+			one=i%10;
+			ten=(parseInt(i/10))%10;
+			hundred=parseInt(i/100);
+			if (i===Math.pow(one,3)+Math.pow(ten,3)+Math.pow(hundred,3))
+			{
+				document.write(i+"<br>");
+			}
+		}
+
+	}
+	
+  </script>
+ </body>
+</html>

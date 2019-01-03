@@ -1,0 +1,97 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	#box{
+		width:300px;
+		margin:auto;
+	}
+	#box textarea{
+		display:block;
+		width:300px;
+		height:100px;
+		margin:100px auto 0;
+		resize:none;
+		text-indent:10px;
+		font-size:30px;
+		color:#ccc;
+	}
+	#box ul{
+		display:flex;
+		width:300px;
+		justify-content:space-between;
+
+	}
+	#box ul li{
+		box-sizing:border-box;
+		width:70px;
+		border:2px solid #ccc;
+		background-color:rgba(163, 178, 241,.3);
+		font-size:20px;
+		text-align:center;
+		line-height:45px;
+		color:dimgrey;
+		cursor: pointer;
+	}
+	</style>
+	</head>
+	<body>
+	<div id="box">
+		<textarea id="text"></textarea>
+		<ul>
+			<li id='on-1'>生成</li>
+			<li id="on-2">大写</li>
+			<li id='on-3'>小写</li>
+			<li id="on-4">清空</li>
+		</ul>
+	</div>
+	<script>
+	var onOne = document.getElementById("on-1");
+	var onTwo = document.getElementById("on-2");
+	var onThree = document.getElementById("on-3");
+	var onFour = document.getElementById("on-4");
+	function rad(){
+		var num='1234567890zaqxswcdevfrbgtnhymjukilopZAQXSWCDEVFRBGTNHYMJUKILOP';
+		var q="";
+		for(var i = 0;i<4;i++){
+			var dig = parseInt(Math.random()*num.length);
+			if (q.indexOf(num[dig])!==-1) {
+				i--;
+				continue;	
+			}
+			q += num[dig];
+		}
+		return q
+	}
+	var sl = rad();	
+	onOne.onclick = function(){
+		document.getElementById('text').innerText = '';
+		document.getElementById('text').innerHTML = sl;
+	}
+	onTwo.onclick = function(){
+		newStr = document.getElementById('text').innerText; 
+			function fn(str){
+			var result ="";
+			for(var i=0;i<str.length;i++){
+				var charCode = str.charCodeAt(i);
+				if(charCode>=97&&charCode<=122){
+					result+=String.fromCharCode(charCode-32);
+				}else{
+					result+=str[i];
+				}
+			}
+			return result;
+		}
+		document.getElementById("text").innerText= fn(newStr);
+	}
+	</script>
+	</body>
+	</html>
