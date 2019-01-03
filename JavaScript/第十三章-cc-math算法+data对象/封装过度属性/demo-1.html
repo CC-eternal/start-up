@@ -1,0 +1,55 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	.box{
+		width:200px;
+		height:200px;
+		margin-left:20px;
+		background-color:aqua;
+		opacity:0;
+	}
+	</style>
+	</head>
+	<body>
+	<div class="box"></div>
+	<script>
+	oBox = document.body.children[0];	//获取节点
+	function myTransition(dom,attr,val,time){		//初始路程
+		var attr_ = getComputedStyle?parseFloat(getComputedStyle(dom)[attr]):parseFloat(dom.currentStyle);
+		var _attr = val -(attr_);			//运动路程
+		var speed = _attr/(time*1000);		//运动速度
+		console.log({"路程":_attr,
+				"速度":speed,
+				"时间":time})
+		var date = new Date();			//初始时间
+		timer = setInterval(function run(){		
+				aDate = new Date();
+				_date = aDate-date;	//运行时间
+					if(attr=="opacity"){
+						var run = attr_+speed*_date>=val?val:attr_+speed*_date
+					}else{
+						var run = attr_+speed*_date>=val?val+"px":attr_+speed*_date+"px";
+					}
+					if(attr_+speed*_date>=val){	//清楚定时器
+						clearInterval(timer);
+					}
+				dom.style[attr]=run;	
+				
+		},10,);
+	}
+	myTransition(oBox,"width",300,2)
+	myTransition(oBox,"height",400,2)
+	myTransition(oBox,"margin-left",100,2)
+	myTransition(oBox,"opacity",1,2)
+	</script>
+	</body>
+	</html>

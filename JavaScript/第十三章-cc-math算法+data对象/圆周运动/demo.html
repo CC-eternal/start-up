@@ -1,0 +1,94 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	div.box{
+		position:relative;
+		width:500px;
+		height:500px;
+		border:2px solid #ccc;
+		margin:50px auto;
+		background-color:rgba(255,255,255,.2);
+		font-size:20px;
+		text-align:center;
+		color:white;
+		line-height:45px;
+		box-shadow:0 0 10px 0 #ccc;
+	}
+	div.box .circle{
+		position:absolute;
+		left:250px;	/*x*/
+		top:500px;;	/*y*/
+		display:inline-block;
+		border:10px solid blue;
+		border-radius:50%;
+		margin-top:-10px;
+		line-height:0px;
+		font-size: 0px;
+	}
+	.m{
+		margin:auto;
+		text-align:center;
+	}
+	 
+	div.m button{
+		width:50px;
+		height:50px;
+		border:2px solid #ccc;
+		background-color:rgba(255,255,255,.2);
+		font-size:20px;
+		text-align:center;
+		color:#ccc;
+		line-height:45px;
+		box-shadow:0 0 10px 0 #ccc;
+		}
+	</style>
+	</head>
+	<body>
+	<div class='box'>
+		<span class="circle">
+		</span>
+	</div>
+	<div class='m'>
+		<button class='start'>开始</button>
+		<button class= 'end'>结束</button>
+	</div>
+	<script>
+	//获取节点
+	oBox = document.body.children[0];
+	oCircle = document.querySelector(".box .circle");
+	oStart = document.querySelector(".m .start");
+	oEnd = document.querySelector(".m .end");
+	//定义
+	var R = parseFloat(getComputedStyle(oBox).width)/2;//获取容器半径
+	var r = parseFloat(oCircle.offsetWidth)/2//小圆半径
+	var radius = {rX:R,rY:R}	//定义圆心
+	var arc = Math.PI/180;		//旋转弧度
+	function run(){	//跑动
+		var x = R*Math.sin(arc);
+		var y = R*Math.cos(arc);
+		arc+=Math.PI/180;
+		oCircle.style.left = radius.rX+x-r+"px";
+		oCircle.style.top = radius.rY+y+"px";
+	}
+	var timer = 0;	//定义定时器名字
+	oStart.onclick = function(){
+		clearInterval(timer);	//开始运行
+		timer = setInterval(run,20);
+	}
+	oEnd.onclick = function(){	//结束运行
+		clearInterval(timer);
+	}
+		
+	
+	</script>
+	</body>
+	</html>

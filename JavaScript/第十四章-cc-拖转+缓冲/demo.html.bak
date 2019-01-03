@@ -1,0 +1,135 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		user-select:none;
+		background-color:rgba(255, 255, 255,.2);
+	}
+	.content{
+		position:fixed;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+		width:320px;
+		height:200px;
+		margin:auto;
+	}
+	.content ul{
+		list-style-type:none;
+	}
+	.content ul li{
+		position:absolute;
+	}
+	.content ul li img{
+		display:block;
+		width:300px;
+		height:180px;
+		border:10px solid #a5bc25;
+		cursor:pointer;
+	}
+	</style>
+	</head>
+	<body>
+	<div class="content">
+		<ul>
+			<li><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+			<li><img src="images/5.jpg" alt=""></li>
+		</ul>
+	</div>
+	<script>
+	var oUl = document.querySelector("ul"),
+		aImg = document.getElementsByTagName("img"),
+		index = 0,				//定义层级
+		W,H,imgW,imgH,leftMax,leftMin,leftMax,topMax,topMin;
+		(function(){
+			W = window.innerWidth,		//游览器宽度
+			H = window.innerHeight,		//游览器高度
+			imgW = parseFloat(aImg[0].offsetWidth),	//图片宽度
+			imgH = parseFloat(aImg[0].offsetHeight),	//图片高度
+			leftMax = (W-imgW)/2,	//游览器左边距
+			leftMin = -(W-imgW)/2,
+			topMax = (H-imgH)/2,	//游览器上边距
+			topMin = -(H-imgH)/2;
+			window.onresize = arguments.callee;	//游览器窗口尺寸变化时触发
+		})()
+		document.body.addEventListener("mousedown",on)	//监听事件
+		function on(e){
+			e = e||window.event;
+			e.preventDefault();
+			var target = e.target||e.srcElement,
+				startLeft = target.parentNode.offsetLeft,
+				startTop = target.parentNode.offsetTop,	//初始位置
+				startX = e.clientX,	//初始鼠标位置
+				startY = e.clientY,
+				nowX = 0,			
+				nowY = 0,
+				lastX = e.clientX,	//存储鼠标上一次位置
+				lastY = e.clientY,
+				changeX = 0,	//两次鼠标之间的差值
+				changeY = 0;
+				index++;
+			document.onmousemove = function(e){
+				e = e||window.event;
+				nowX = e.clientX - startX + startLeft;	//鼠标位置
+				nowY = e.clientY - startY + startTop;
+
+				var nowLeft = Math.min(nowX,leftMax);	//取边框大小
+				nowLeft = Math.max(nowLeft,leftMin);
+				var nowTop = Math.min(nowY,topMax);
+				nowTop = Math.max(nowTop,topMin);
+					
+				changeX = e.clientX - lastX;	//两次鼠标之间的差值
+				changeY = e.clientY - lastY;
+				lastX = e.clientX;	//存储鼠标上一次位置
+				lastY = e.clientY;
+					
+				target.parentNode.style.left = nowLeft + "px";	//li现实位置
+				target.parentNode.style.top =	nowTop  + "px"; 	
+				target.parentNode.style.zIndex = index;	//图片层级
+			}
+			document.onmouseup = function(e){
+				document.onmousemove = null;	//清除move
+				var timer = setInterval(function(){
+					changeX*=0.9;
+					changeY*=0.9;
+					var nowLeft = target.parentNode.offsetLeft + changeX;
+					var nowTop = target.parentNode.offsetTop + changeY ;
+					
+					
+					changeX = nowLeft>=leftMax?-changeX:changeX;	//到边界时change取反
+					changeX = nowLeft<=leftMin?-changeX:changeX;
+					changeY = nowTop<=topMin?-changeY:changeY;
+					changeY = nowTop>=topMax?-changeY:changeY;
+
+					nowLeft = Math.min(nowLeft,leftMax);	//取边框大小
+					nowLeft = Math.max(nowLeft,leftMin);
+					nowTop = Math.min(nowTop,topMax);
+					nowTop = Math.max(nowTop,topMin);
+
+					target.parentNode.style.left = nowLeft  + "px";
+					target.parentNode.style.top = nowTop + "px";
+					if(Math.abs(changeX)<0.5&&Math.abs(changeY)<0.5){//当change<0.5时清除定时器
+						clearInterval(timer)
+					}
+				},20) 
+				document.onmouseup = null;	//清除up
+			}
+		}
+	
+	
+	</script>
+	</body>
+	</html>

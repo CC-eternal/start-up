@@ -1,0 +1,161 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	.box{
+		width:1000px;
+		margin:50px auto 0;
+	}
+	.box ul{
+		display:flex;
+		width:100%;
+		height: 400px;
+		background-color:rgb(106, 151, 34);
+		justify-content:space-around;
+		flex-wrap:wrap;
+	}
+	.box ul li{
+		width:24%;
+		height:32%;
+		border:2px solid #ccc;
+		background-color:aliceblue;
+	
+	}
+	</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li id='text'></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class='next'></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class='last'></li>
+			</ul>
+		</div>
+	<script>
+	
+	oText = document.getElementById('text');
+	aBox = document.body.getElementsByClassName("box");
+//1.封装函数，返回元素的第n层祖先元素
+	function paog(tag,n){
+		var result = tag;
+		for(var i = 0;i<n;i++){
+			result = result.parentNode;
+			if(result===null){
+				return '无节点';
+			}
+		}
+		return result;
+	}
+	console.log(paog(oText,1));
+//2.封装myChildren函数，实现系统的children功能
+	function myChildren(tag){
+		child = [];
+		for(var i = 0;i<tag.childNodes.length;i++){
+			if(tag.childNodes[i].nodeType===1){
+				child.push(tag.childNodes[i])
+			}
+		}return child
+	}
+	console.log(myChildren(aBox[0]))
+
+//3.封装hasChildren函数，要求不能使用children功能
+	function hasChildren(tag){
+		for(var i = 0;i<tag.childNodes.length;i++){
+			if(tag.childNodes[i].nodeType===1){
+			return true;
+			}
+		}return false;
+	}
+	console.log(hasChildren(aBox[0]))
+//4.封装insertAfter函数，功能和inserBefore类似
+	var oSpan = document.createElement('span');
+	function insertAfter(parent,tag,x){
+		parent.insertBefore(x,tag.nextElementSibling);
+	}
+	insertAfter(oText.parentElement,oText,oSpan)
+//5.封装remove函数，是child removeChild()能够删除自身
+	function remove(tag){
+		tag.parentNode.removeChild(tag);
+	}
+	remove(oSpan)
+//6.封装函数，实现元素节点内部的顺序，逆序
+	function fn(tag){
+		for(var i = 0;i<tag.children.length;i++){
+			tag.appendChild(tag.children[tag.children.length-i-1]);
+		}
+	}
+	fn(oText.parentElement)
+
+//7.封装getStyle(dom,attr)兼容性函数
+	function getStyle(dom,attr){
+		if(getComputedStyle){
+			return dom.getComputedStyle(dom,null).attr
+		}else{
+			return dom.currentStyle.attr
+		}
+	}
+//8.封装getElementPosition函数，获取元素相对于文档的坐标
+	function getElementPosition(tag){
+		 
+		 if(tag.parentElement = 'body'){
+			return {
+					x:tag.offsetLeft,
+					y:tag.offsetTop
+					}
+		}
+		return {
+			x:dom.offsetLeft + getElePos(dom.offsetParent).x,
+			y:dom.offsetTop + getElePOs(dom.offsetParent).y
+		}
+	}
+	console.log(getElementPosition(oText.parentElement.getElementsByClassName("last")[0]))
+
+//9.封装getScrollOffset兼容性函数
+	function getScrolloffset(){
+		if(window.pageXOffset){
+			return {
+				x:window.pageXoffset,
+				y:window.pageYoffset
+			}
+		}else{
+			return {
+				x:document.documentElement.scrollLeft+document.body.scrollLeft,
+				y:document.documentElement.scrollTop+document.body.scrollTop
+			}
+		}
+	}
+//10.封装getViewportOffset兼容性函数
+	function getViewportOffset(){
+		if(null&&window.innerWidth){
+			return {
+				x:window.innerWidth,
+				y:window.innerHeight
+			}
+		}else{
+			if(document.compatMode==='BackCompat'){
+				x:document.documentElement.clientWinth,
+				y:document.documentElement.clientHeight
+			}
+		}
+	}
+
+  </script>
+ </body>
+</html>

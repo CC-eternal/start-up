@@ -1,0 +1,69 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	.box{
+		width:200px;
+		height:200px;
+		margin-left:20px;
+		background-color:aqua;
+		opacity:0;
+	}
+	</style>
+	</head>
+	<body>
+	<div class="box"></div>
+	<script>
+	oBox = document.body.children[0];	//获取节点
+	function myTransition(dom,jsonTarget,time,callBack){
+		jsonStart = {};
+		jsonSpeed = {};
+		for(key in jsonTarget){		//遍历形参
+			jsonStart[key] = getStyle(dom,key);			//初始路程对象
+			jsonSpeed[key] = (key-jsonStart[key])/time;	//速度对象
+		}
+
+		function getStyle(dom,arrt){	//封装getStyle方法
+			if(getComputedStyle){
+				return parseFloat(getComputedStyle(dom)[arrt]);
+			}else{
+				return parseFloat(dom.currentStyle[arrt]);
+			}
+		}
+
+		var date = new Date();			//初始时间
+		var timer = setInterval(function(){		
+				aDate = new Date();
+				_date = aDate-date;	//运行时间
+				for(key in jsonTarget){
+					if(key==="opacity"){
+						dom.style[key] = jsonStart[key]+jsonSpeed[key]*_date;
+					}else{
+						dom.style[key] = jsonStart[key]+jsonSpeed[key]*_date+"px";
+					}
+				}
+				clearInterval(timer);
+				callBack && callBack.call(dom);
+					
+				
+		},10,);
+	}
+	myTransition(oBox,{
+		"width":300,
+		"height":500,
+		"margin-left":100,
+		"opacity":1
+	},2,function(){
+		this.style.backgroundColor = 'purple'
+	})
+	</script>
+	</body>
+	</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	div{
+		margin:20px auto;
+		text-align:center;
+	}
+	div button{
+		width:50px;
+		height:50px;
+		margin:20px auto;
+		border:2px solid #ccc;
+		background-color:rgba(255,255,255,.2);
+		font-size:20px;
+		text-align:center;
+		color:#ccc;
+		line-height:45px;
+		box-shadow:0 0 10px 0 #ccc;
+		cursor: pointer;
+	}
+	.box .list{
+		display:flex;
+		justify-content:left;
+		flex-wrap: wrap;
+	}
+	.box .list li{
+		width:20%;
+		height:70px;
+		border:1px solid #ccc;
+		box-sizing: border-box;
+		line-height:45px;
+		text-align:center;
+		font-size:20px;
+		color:antiquewhite;
+	}
+	</style>
+	</head>
+	<body>
+		<div>
+			<button>开始</button>
+			<button>停止</button>
+		</div>	
+	<div class="box">
+		<ul class="list">
+		</ul>
+	</div>
+	<script>
+	//获取节点
+	var aBtn = document.querySelectorAll("div button");
+	var oList = document.querySelector(".box .list");
+	//定义函数
+	 function run(){
+		var aLi = document.createElement('li');
+		var R = Math.floor(Math.random()*256);
+		var G = Math.floor(Math.random()*256);
+		var B = Math.floor(Math.random()*256);
+		aLi.style.backgroundColor = "rgb("+ R+","+G+","+B+")";
+		aLi.innerText = "("+R+","+G+","+B+")";
+		oList.appendChild(aLi);
+	}
+	var on = 0;
+	//点击时执行
+	aBtn[0].onclick = function(){
+		clearInterval(on)
+		on = setInterval(run,1000)
+		}
+	//点击时停止
+	aBtn[1].onclick = function(){
+		clearInterval(on)
+	}
+	</script>
+	</body>
+	</html>

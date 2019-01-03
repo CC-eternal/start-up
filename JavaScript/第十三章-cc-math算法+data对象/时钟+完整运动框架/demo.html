@@ -1,0 +1,175 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	.box{
+		width:500px;
+		margin:100px auto;
+		background-color:pink;
+		 overflow:hidden;  
+	}
+	.box ul{
+		height:74px;
+	}
+	.box ul li{
+		position: relative;
+		display:inline-block;
+		width:11%;
+		height:72px;
+		background-repeat:no-repeat;
+		background-size:contain;
+		text-align:center;
+	}
+	.box ul li img{
+		width:90%;
+	}
+	.box ul li .d{
+		position: relative;
+   		bottom: 74px;
+		width:50%;
+		height:100%
+	}
+	.back{
+		position:fixed;
+		top:100px;
+		left:100px;
+		width:200px;
+		height:200px;
+		background-color:aqua;
+		opacity:1;
+	}
+	</style>
+	</head>
+	<body>
+	<div class="box">
+		<ul>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>
+			<li>
+				<img class='d' src="images/d.png" alt="">
+				<img class='d' src="images/d.png" alt="">
+			</li>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>
+			<li>
+				<img class='d' src="images/d.png" alt="">
+				<img class='d' src="images/d.png" alt="">
+			</li>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>
+			<li class='list'>
+				<img class='img' src="images/0.png" alt="">
+				<img class='img-next' src="images/0.png" alt="">
+			</li>	
+		</ul>
+	</div>
+	<div class="back"></div>
+	<script>
+	//获取节点
+	var aImg = document.getElementsByClassName("img"),
+		aImgNext = document.getElementsByClassName("img-next"),
+		aList = document.getElementsByClassName("list");
+		oUl = document.querySelector(".box ul");
+	//执行主体
+	setInterval(function(){
+		_date = new Date();	//第一个时间戳
+		timeFirst =toTwo(_date.getHours())+toTwo(_date.getMinutes())+ toTwo(_date.getSeconds());
+		for(var i = 0;i<timeFirst.length;i++){	//给第一个时间戳附上图片
+			aImg[i].src = 'images/'+ timeFirst[i] +'.png';
+		}
+		_date.setSeconds(_date.getSeconds()+1);	//下一秒
+		timeNext =toTwo(_date.getHours())+toTwo(_date.getMinutes())+ toTwo(_date.getSeconds());
+		for(var i = 0;i<timeNext.length;i++){	//给下秒时间附上图片
+			aImgNext[i].src = 'images/'+ timeNext[i] +'.png';
+		}
+		for(var i = 0;i<aList.length;i++){
+			if(aImg[i].src!==aImgNext[i].src){
+				(function(i){		//一次性函数，存住i
+					run(aList[i],{
+					bottom:80
+					},0.8,function(){		//回调函数
+						this.style.bottom = 0;
+						aImg[i].src = 'images/'+timeNext[i]+".png";
+					})
+				
+				})(i)
+			}
+			
+		}
+
+	},1000)
+	//自定义函数
+	function toTwo(num){				//把一位数变成两位数
+		return num = num>=10?num+'':"0"+num;	
+	}
+	function getStyle(dom,attr){			//获取计算属性，兼容性
+		return dom.currentStyle?parseFloat(dom.currentStyle[attr]):parseFloat(getComputedStyle(dom)[attr]);
+	}
+	function run(dom,obj,time,callBack){			//运动框架
+		var jsonStart = {};	//初始对象
+		var jsonSpeed = {};	//速度对象
+		for(key in obj){
+			jsonStart[key] = getStyle(dom,key);
+			jsonSpeed[key] = (obj[key]- jsonStart[key])/(time*1000);
+		}
+		var _date = new Date();	//初始时间
+		var timer = setInterval(function(){	//定义定时器
+			var timeDiff = new Date()-_date;	//时间差
+			for(key in obj){
+				if(timeDiff>time*1000){		//当时间差大于运行时间时停止
+					clearInterval(timer);
+					timeDiff=time*1000;
+					callBack&&callBack.call(dom,jsonStart,time);//回调传值
+				}else{
+					if(key==="opacity"){	
+						dom.style[key] = jsonStart[key]+jsonSpeed[key]*timeDiff;
+					}else{
+						dom.style[key] = jsonStart[key]+jsonSpeed[key]*timeDiff+'px';
+					}
+				}
+			}
+			
+		},20)
+	}
+	/*var oBack = document.getElementsByClassName("back")[0];
+	run(oBack,{
+		width:100,
+		height:400,
+		left:200,
+		top:150,
+		opacity:.2
+	},2,function(end,time){	//往回走
+		run(this,end,time)
+	})
+	*/
+		
+	
+	
+	
+	
+	
+	</script>
+	</body>
+	</html>
