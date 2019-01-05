@@ -1,0 +1,54 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	</style>
+	</head>
+	<body>
+	<script>
+	//1.检测一个数据是否是数字	数字中有整数，小数负数等
+		(function(){
+			var str = "10086",
+				reg = /\D|/;
+				console.log(str.search(reg));
+		})();
+	//2	.检测是否是本地电话
+
+	//3.	get-element-by-id	转换成 getElementById
+		(function(){
+			var str = "get-element-by-id",
+				reg = /-\w/g;
+				console.log(str.replace(reg,function(){	
+					return arguments[0][1].toUpperCase()}))
+		})();
+	//4.	aaabbbccc	转换成 CCCBBBAAA
+		(function(){
+			var str = "aaabbbccc",
+				reg= /(\w)\1\1(\w)\2\2(\w)\3\3/g;
+				console.log(str.replace(reg,function($){
+					return $.split("").reverse().join("").toUpperCase()
+				}))
+		})()
+	//5.	把www.baidu1.com	转换成 www.tanzhou.com
+		
+	//6.	封装函数 用'Batman'替换'ABC'	‘ABC is an means ABC is great'
+
+	//7.	"<p class='on'>我是海文</p>0"	转换成"我是海文"
+
+	//8.	把'div#heaven.heaven'	转换成 "<div id='heaven'class='headsome'></div>"
+
+	//9.	检测密码 密码必须包含大小写字母数字特殊符号
+
+	//10.	8888888	转换成 8，888，888
+
+	</script>
+	</body>
+	</html>

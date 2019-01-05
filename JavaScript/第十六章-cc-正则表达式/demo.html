@@ -1,0 +1,96 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	</style>
+	</head>
+	<body>
+	<script>
+		
+		
+	//1.检测一个数据是否是数字	数字中有整数，.小数负数等
+		(function(){
+			var str = "-10.086",
+				rag = /^-?\d+(\.?\d+)$/;
+				reg = /^-?\d+((\.{1}\d+)|)$/
+				console.log(str.match(reg));	
+		})();
+	//2	.检测是否是本地电话	000-12345678	0000-12345678
+		(function(){
+			var str = '000-12345678',
+				reg = /^\d{3,4}-{1}\d{8}$/
+				console.log(str.match(reg))
+		})();
+	//3.	get-element-by-id	转换成 getElementById
+		(function(){
+			var str = "get-element-by-id",
+				reg = /-[a-z]/g;
+			console.log(str.replace(reg,function($){
+				return $.toUpperCase();
+			}))
+		})();
+	//4.	aaabbbccc	转换成 CCCBBBAAA
+		(function(){
+			var str = "aaabbbccc",
+				reg = /(\w)\1\1(\w)\2\2(\w)\3\3/;
+				str1 = str.replace(reg,"$3$3$3$2$2$2$1$1$1").toUpperCase();
+				str2 = str.replace(reg,function($,$1,$2,$3){
+					return ($3+$3+$3+$2+$2+$2+$1+$1+$1).toUpperCase();
+				})
+				console.log(str2)
+		})();
+	//5.	把www.baidu1.com	转换成 www.tanzhou.com
+		(function(){
+			var str = 'www.baidu1.com',
+				reg = /\.\w+\./;
+				newStr = str.replace(reg,".tanzhou.")
+				console.log(newStr)
+		})();
+	//6.	封装函数 用'Batman'替换'ABC'	‘ABC is an means ABC is great'
+		(function(){
+			var str = "ABC is an means ABC is great"
+			function toCase(str,state,change){
+				var reg = new RegExp(state,"g");
+				return str.replace(reg,change)
+			}
+			var newStr = toCase(str,"ABC","Batman")
+			console.log(newStr)
+		})();
+	//7.	"<p class='on'>我是海文</p>"	转换成"我是海文"
+		(function(){
+			var str = "<p class='on'>我是海文</p>",
+				reg = /<{1}[^>]+>{1}/g;
+				console.log(str.replace(reg,""))
+		})();
+	//8.	把'div#heaven.heaven'	转换成 "<div id='heaven'class='headsome'></div>"
+		(function(){
+			var str = 'div#heaven.heaven';
+			var newStr = str.replace(/#{1}([a-z]+)/," id = '$1'").replace(/\.{1}([a-z]+)/," class ='$1'").replace(/([a-z]+)(.+)/,"<$1$2></$1>");
+			console.log(newStr)
+		})();
+	//9.	检测密码 密码必须包含大小写字母数字特殊符号
+		(function(){
+			var str = 'aA123%^&^*&%*^*%@$*^';
+			function det(str){
+				var result = /[a-z]/.test(str)&&/[A-Z]/.test(str)&&/[0-9].test(str)/&&/[!@#$%]/.test(str);
+				return result
+			}
+			console.log(det(str))
+		})();
+	//10.	8888888	转换成 8，888，888
+		(function(){
+			var str = "888888888",
+				reg = /\B(?=(\d{3})+$)/g;
+				console.log(str.replace(reg,","))
+		})()
+	</script>
+	</body>
+	</html>
