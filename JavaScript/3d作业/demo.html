@@ -1,0 +1,294 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:20px;user-select:none}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	html{
+		width:100%;
+		height:100%;
+	}
+	body{
+		width:100%;
+		height:100%;
+		background-image:url("images/bg.png");
+		background-size:cover;
+		perspective:800px;
+		overflow:hidden;
+	}
+	#wrap{
+		position:relative;
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,.2)
+	}
+	#wrap	#btns{
+		display:flex;
+		justify-content: space-between;
+		position:absolute;
+		bottom:20px;
+		left:20px;
+		width:350px;
+	}
+	#wrap	#btns button{
+		width:65px;
+		height:50px;
+		border:2px solid rgba(127,255,255,1);
+		background-color:rgba(255,255,255,.2);
+		font-size:16px;
+		text-align:center;
+		color:rgba(127,255,255,1);
+		line-height:45px;
+		box-shadow:0 0 10px 0 rgba(127,255,255,1);
+		cursor: pointer;
+		transition-duration:.5s;
+		border-radius:15px;
+	}
+	#wrap	#btns button:hover{
+		color:rgba(200,255,255,1);
+		background-color:rgba(255,255,255,.3);
+	}
+	#wrap	#box{
+		position:absolute;
+		width:40px;
+		height:50px;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		margin:auto;
+		transform-style:preserve-3d;
+		perspective-origin: 800px;
+	}
+	#wrap	#box ul{
+		position:absolute;
+		width:100%;
+		height:100%;
+		/* background: rgba(0,127,127,0.5);
+		border: 1px solid rgba(127,255,255,0.25);
+		box-shadow: 0 0 12px rgba(0,255,255,0.5); */
+		transform-style:preserve-3d;	
+		/* transition:2s; */
+	}
+	#wrap	#box ul:hover{
+		/* transform:rotateY(180deg); */
+	}
+	#wrap	#box ul li{
+		position:absolute;
+		width:100%;
+		height:100%;
+		background: rgba(0,127,127,0.5);
+		border: 1px solid rgba(127,255,255,0.25);
+		text-align: center;
+		line-height: 50px;
+		font-size: 20px;
+		color:white;
+		box-shadow: 0 0 12px rgba(0,255,255,0.5);
+		transition-duration:5s;
+	}
+	</style>
+	</head>
+	<body>
+	<div id="wrap">
+		<div id="btns">
+			<button>Table</button>
+			<button>Sphere</button>
+			<button>Helix</button>
+			<button>Grid</button>
+			<button>Random</button>
+		</div>
+	<div id="box"></div>
+	</div>
+	<script>
+	var oBox = document.getElementById("box");
+	var aBtn = document.querySelectorAll("#wrap #btns button");
+	var num = 125;
+	(function(n){       				//初始化
+		var oUl = document.createElement("ul");
+			oBox.appendChild(oUl);
+			for(var i = 0;i<n;i++){		
+				var aLi = document.createElement("li");
+				aLi.innerHTML= i;
+				oBox.children[0].appendChild(aLi);
+			}
+	})(num)
+	var aLi = document.querySelectorAll("#wrap #box ul li");
+	var oUl = oBox.children[0];
+	var _time = new Date();
+	aBtn[0].addEventListener("click",table);
+	aBtn[1].addEventListener("click",sphere);
+	aBtn[2].addEventListener("click",helix);
+	aBtn[3].addEventListener("click",grid);
+	aBtn[4].addEventListener("click",random);
+	function grid(){					//矩阵模块
+		var lMargin = 20;
+		var zMargin = 100;
+		var lW = aLi[0].offsetWidth;
+		var lH = aLi[0].offsetHeight;
+	
+		for(var i=0;i<aLi.length;i++){
+			var x = i%5%5-2;		//x位移
+			var y = ~~(i/5)%5-2;	//y位移,位运算取小数位的整数
+			var z = 2-~~(i/25);	//z位移
+			aLi[i].style.transform = "translate3d("+x*(lW+lMargin)+"px,"+y*(lH+lMargin)+"px,"+z*zMargin+"px)";	
+		}
+	}
+	//grid(lMargin,zMargin);	
+	function helix(){ 				//螺旋模块
+		var zRadius = 300;
+		var times = 4;
+		for(var i = 0;i<aLi.length;i++){
+			var yDeg = 360*i*5/(aLi.length);	//旋转度数
+			var yLength = i-aLi.length/2;		//y轴距离
+			aLi[i].style.transform = "rotateY("+yDeg+"deg)translateZ("+zRadius+"px)translateY("+yLength*times+"px)";
+		}
+	}
+	//Helix(300,4)
+	function table(){					//元素周期表模块
+		var arr1 = [[-7,-3],[10,-3]];
+		var arr2 = [[-7,-2],[-6,-2],[5,-2],[6,-2],[7,-2],[8,-2],[9,-2],[10,-2]];
+		var arr3 = [[-7,-1],[-6,-1],[5,-1],[6,-1],[7,-1],[8,-1],[9,-1],[10,-1]];
+		var arr4 = [];
+		for(var i = 0;i<aLi.length-18;i++){
+			 arr4.push([i%18-7,~~(i/18)]);
+		}
+		var newArr = arr1.concat(arr2,arr3,arr4);
+		var lW = aLi[0].offsetWidth;
+		var lH = aLi[0].offsetHeight;
+		for(var i = 0;i<newArr.length;i++){
+			aLi[i].style.transform = "translate("+newArr[i][0]*lW+"px,"+newArr[i][1]*lH+"px)";
+		}
+	} 
+	//table();
+	function sphere(){				//球形模块
+		var arr = [1,5,7,11,14,16,19,17,13,9,7,5,1];//每个层个数
+		var lay = 0;	//设置层数
+		var num = 0;	//记录第lay层的第几个
+		//i记录所有li,
+		for(var i=0;i<aLi.length;i++){
+			var sum=0;	//
+			for(var j=0;j<arr.length;j++){
+				sum+=arr[j]
+				if(sum>i){
+					lay = j;
+					num = arr[lay]-(sum-i);
+					break;
+				}
+			}
+			//console.log(num)
+			//console.log(i,lay)
+			var yDeg = 360*num/arr[lay];
+			var xDeg = 90+lay*180/(arr.length-1);
+			aLi[i].style.transform = "rotateY("+yDeg+"deg)rotateX("+xDeg+"deg)translateZ("+300+"px)"
+		}
+	}
+	function random(){				//随机模块
+		var time_ = new Date();
+		if(time_-_time<5000)return;
+		_time=time_;
+		var arr = [];
+		for(var i = 0;i<aLi.length;i++){
+			arr.push(i);	
+		}
+		arr.sort(function(){			//乱序排列
+			return Math.random()-0.5;
+		})
+		for(var i = 0;i<aLi.length;i++){
+			var str = getComputedStyle(aLi[i],null).transform;
+			aLi[arr[i]].style.transform = str;
+		}
+	}
+	(function(){					//拖拽模块
+		var xDeg = 0;			//存放当前的旋转角度
+		var yDeg = 0;	
+
+		var xChange = 0;
+		var yChange = 0;
+		var timer = 0;
+
+		var _date = new Date();
+		oUl.addEventListener("mousedown",function(e){
+			var date_ = new Date();
+			if(date_-_date<500)return;
+			_date=date_;
+			//e.preventDefault()||(e.returnValue = false);
+			var startX = e.clientX;
+			var startY = e.clientY;
+
+			var _Xdeg = xDeg;		//存放上一次的角度
+			var _Ydeg = yDeg;
+
+			var xLast;			//存储当前鼠标位置
+			var yLast;
+			clearInterval(timer);
+			document.onmousemove = function(e){
+				e = e||window.event;
+				
+				xChange = e.clientX-xLast||0;	//鼠标之前的差值
+				yChange = e.clientY-yLast||0;	
+
+				xLast = e.clientX;		//存放当前鼠标位置
+				yLast = e.clientY;		
+
+				var moveX =  (e.clientX-startX)*0.1;
+				var moveY =  -(e.clientY-startY)*0.1;
+
+				xDeg = _Xdeg+moveX;	//存放当前角度
+				yDeg = _Ydeg+moveY;
+				oUl.style.transform = "rotateX("+yDeg+"deg)rotateY("+xDeg+"deg)";
+			}
+			document.onmouseup = function(){
+				
+				this.onmousemove = null;
+				this.onmouseup = null;
+
+				var timer = setInterval(function(){
+					xChange = xChange>0?Math.min(2,xChange):xChange;
+					xChange = xChange<0?Math.max(-2,xChange):xChange;
+					yChange = yChange>0?Math.min(2,yChange):yChange;
+					yChange = yChange<0?Math.max(-2,yChange):yChange;
+					xChange*=0.99;
+					yChange*=0.99;
+					xDeg+=xChange;
+					yDeg-=yChange;
+					oUl.style.transform = "rotateX("+yDeg+"deg)rotateY("+xDeg+"deg)";
+					if(Math.abs(xChange)<0.001&&Math.abs(yChange)<0.001){
+						clearInterval(timer);
+					}
+				},10)
+			}
+		});
+	})()
+	var zIndex = 0;
+	document.onmousewheel = function(e){	//滚轮模块
+		e = e||window.event;
+		if(e.wheelDelta>=120){
+			zIndex+=20;
+			
+		}else{
+			zIndex-=20;
+		}
+		zIndex = Math.min(500,zIndex);
+		zIndex = Math.max(-1000,zIndex);
+		oBox.style.transform = "translateZ("+zIndex+"px)"
+	}
+	document.oncontextmenu = function(){	//禁止右键
+		return false;
+	}
+	var timer = setTimeout(function(){		//延迟定时器
+		helix();
+		//grid();
+		//table();
+		//sphere()
+		clearTimeout(timer);
+	},100);
+	
+	</script>
+	</body>
+	</html>
