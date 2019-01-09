@@ -1,0 +1,76 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	/*.wrap{
+		width:157px;
+		margin: 20px auto;
+		overflow:hidden;
+	}*/
+	.box{
+		float:left;
+		width:155.5px;
+		height:350px;
+		background:url('images/2.png') no-repeat 0px/466px;
+		/* background-size:cover; */
+	}
+	</style>
+	</head>
+	<body>
+	<!-- <div class="wrap">
+		<div class='box'></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		 <div class='box'></div> 
+	</div> -->
+	<script>
+		function Lamp(){
+			this.dom = document.createElement("div");
+			this.box = document.body.appendChild(this.dom);
+			this.box.className = "box";
+			this.index = 0;
+			
+			this.dom.onclick = function(){
+				this.index++;
+				this.index%=3;
+				this.box.style.backgroundPosition = -152*this.index+'px';
+			}.bind(this)
+		}
+		for(var i = 0;i<10;i++){
+			new Lamp();
+		}
+	/*var aBox = document.getElementsByClassName("box");
+	var num = 152;
+	var index = 0;
+	aBox[0].addEventListener("click",function(){
+		index++;
+		aBox[0].style.backgroundPositionX = -index*num+"px";
+		index%=2;
+	})8/
+	/*var num = 155;
+	var index1 = 0;
+	var index2 = 0;
+	aBox[0].addEventListener("click",function(){
+		aBox[0].style.transform = "translateX("+-index1*num+"px)";
+		index1++;
+		index1 = index1>2?0:index1;
+	})
+	aBox[0].addEventListener("click",function(){
+		aBox[1].style.transform = "translateX("+-index2*num+"px)";
+		index2++;
+		index2 = index2>2?0:index2;
+	})
+	*/
+	</script>
+	</body>
+	</html>

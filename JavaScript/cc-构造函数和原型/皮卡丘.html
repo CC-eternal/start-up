@@ -1,0 +1,159 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	div{
+		position:fixed;
+		top:50px;
+		width:63px;
+		height:60px;
+		background-image:url("images/1.png");
+		background-position-y:180px;
+	}
+	span{
+		display:block;
+		position:fixed;
+		top:200px;
+		width:63px;
+		height:60px;
+		background-image:url("images/1.png");
+		background-position-y:180px;
+	}
+	ul{
+		
+		position:fixed;
+		top:400px;
+		width:63px;
+		height:60px;
+		background-image:url("images/1.png");
+		background-position-y:180px;
+	}
+	</style>
+	</head>
+	<body>
+	<!-- <div></div> -->
+	<script>
+	function Pkq(){
+		this.dom = document.createElement("div");
+		document.body.appendChild(this.dom);
+		this.index = 0;		
+		this.sw = true;		//记录是否在运动
+		this.move();
+		console.log(this)
+		this.kill = function(){console.log(this,this.offsetLeft)
+			if(this.dom.offsetLeft>=1300){
+				this.dom.parentNode.removeChild(this.dom);
+				clearInterval(this.timer)
+			}
+		}
+		this.dom.onclick = function(){	//点击时暂停
+			if(this.sw){
+				clearInterval(this.timer);
+				this.sw=!this.sw;
+			}else{
+				this.sw = !this.sw;
+				this.move();
+			}
+			
+		}.bind(this)
+		
+	}
+	Pkq.prototype.move=function(){
+		this.timer = setInterval(function(){
+			this.index++;
+			this.index%=7;
+			this.kill();
+			if(this.index<6&&this.index>0){	//当跳跃时运动
+				this.dom.style.left = this.dom.offsetLeft+20*Math.random()+"px";
+			}
+				this.dom.style.backgroundPositionX = -63*this.index+"px";
+		}.bind(this),100);
+	}
+	function Pkq2(){
+		this.dom = document.createElement("span");
+		document.body.appendChild(this.dom);
+		this.index = 0;		
+		this.sw = true;		//记录是否在运动
+		this.move();
+		console.log(this)
+		this.kill = function(){console.log(this,this.offsetLeft)
+			if(this.dom.offsetLeft>=1300){
+				this.dom.parentNode.removeChild(this.dom);
+				clearInterval(this.timer)
+			}
+		}
+		this.dom.onclick = function(){	//点击时暂停
+			if(this.sw){
+				clearInterval(this.timer);
+				this.sw=!this.sw;
+			}else{
+				this.sw = !this.sw;
+				this.move();
+			}
+			
+		}.bind(this)
+		
+	}
+	Pkq2.prototype.move=function(){
+		this.timer = setInterval(function(){
+			this.index++;
+			this.index%=7;
+			this.kill();
+			if(this.index<6&&this.index>0){	//当跳跃时运动
+				this.dom.style.left = this.dom.offsetLeft+20*Math.random()+"px";
+			}
+				this.dom.style.backgroundPositionX = -63*this.index+"px";
+		}.bind(this),100);
+	}
+	function Pkq3(){
+		this.dom = document.createElement("ul");
+		document.body.appendChild(this.dom);
+		this.index = 0;		
+		this.sw = true;		//记录是否在运动
+		this.move();
+		console.log(this)
+		this.kill = function(){console.log(this,this.offsetLeft)
+			if(this.dom.offsetLeft>=1300){
+				this.dom.parentNode.removeChild(this.dom);
+				clearInterval(this.timer)
+			}
+		}
+		this.dom.onclick = function(){	//点击时暂停
+			if(this.sw){
+				clearInterval(this.timer);
+				this.sw=!this.sw;
+			}else{
+				this.sw = !this.sw;
+				this.move();
+			}
+			
+		}.bind(this)
+		
+	}
+	Pkq3.prototype.move=function(){
+		this.timer = setInterval(function(){
+			this.index++;
+			this.index%=7;
+			this.kill();
+			if(this.index<6&&this.index>0){	//当跳跃时运动
+				this.dom.style.left = this.dom.offsetLeft+20*Math.random()+"px";
+			}
+				this.dom.style.backgroundPositionX = -63*this.index+"px";
+		}.bind(this),100);
+	}
+	setInterval(function(){
+		new Pkq();
+		new Pkq2()
+		new Pkq3();
+	},2000);
+	</script>
+	</body>
+	</html>
