@@ -1,0 +1,88 @@
+<!doctype html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="关键词">
+	<meta name="Description" content="内容">
+	<title>标题</title>
+	<style>
+	*{ margin:0px; padding:0px;line-height:25px;letter-spacing:3px;}
+	a{text-decoration:none;}
+	ul,li{list-style-type:none;}
+	img{border:none;}
+	body{
+		overflow:hidden;
+	}
+	div{
+		position:fixed;
+		width:100px;
+		height:100px;
+		border-radius: 100px 100px 10px;
+		background-color:pink;
+		transform:rotate(45deg)
+	}
+	div::after{
+		content: '';
+		position: absolute;
+		bottom: -83px;
+		left: 132px;
+		width: 2px;
+		height: 100px;
+		transform: rotate(-45deg);
+		background-color: #ccc;
+	}
+	</style>
+	</head>
+	<body>
+	<!-- <div></div> -->
+	<script>
+	
+	var wH = window.innerHeight;	//获取游览器高度
+	var wW = window.innerWidth;	//游览器宽度
+	
+	var color = ["red","green","pink","black","yellow","purple","blue","orange","brown"]
+	
+	window.onresize=function(){
+		wH = window.innerHeight;	//获取游览器高度
+		wW = window.innerWidth;		//游览器宽度
+	}
+		
+	function Ballon(){
+		this.dom = document.createElement("div");
+		document.body.appendChild(this.dom);
+		this.speed = -1+-5*Math.random()	//速度
+		this.dom.style.left = (wW-100)*Math.random()+"px"
+		this.dom.style.backgroundColor = color[~~(10*Math.random())];
+		this.dom.style.top = wH+"px";
+		this.ck();
+		this.kill();
+	}
+	Ballon.prototype.ck = function(){		//点击时加快运动
+		this.dom.onclick = function(){		
+			this.change = 1;
+			this.timer = setInterval(function(){	
+				this.change *= 0.99;	
+				this.dom.style.transform = getComputedStyle(this.dom).transform+"scale("+this.change+")";
+				if(this.change<=0.5){
+					clearInterval(this.timer)
+				}
+			}.bind(this),20)
+		}.bind(this)
+	}
+	Ballon.prototype.kill = function(){		
+		this.timer = setInterval(function(){	
+			if(this.dom.offsetTop<-200){//超过屏幕时清除
+				this.dom.parentNode.removeChild(this.dom);
+				clearInterval(this.timer)
+			}
+			this.dom.style.top = this.dom.offsetTop+this.speed+"px";
+			
+		}.bind(this),10)
+	}
+	setInterval(function(){
+		new Ballon();
+	},200)
+	
+	</script>
+	</body>
+	</html>
